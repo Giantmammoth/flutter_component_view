@@ -1,24 +1,23 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:viseo/presentation/view/Button_view/Button_view.dart';
 import 'package:viseo/presentation/view/Card_view/CardView.dart';
+import 'package:viseo/presentation/view/Input_view/InputView.dart';
+import 'package:viseo/presentation/view/common/BottomBar/BottomAppBar.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen ({
+  const HomeScreen({
     Key? key,
   }) : super(key: key);
 
-@override
-State<HomeScreen> createState() => _HomeScreenState();
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 172, 172, 172),
+      backgroundColor: Colors.black,
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
@@ -26,19 +25,22 @@ class _HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+      body: GestureDetector(
+        onTap: () {
+          FocusManager.instance.primaryFocus?.unfocus();
+        },
+        child: ListView(
+          padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
+          children: const [
             Buttonview(),
-            Padding(
-              padding: EdgeInsets.only(top: 50),
-              child: CardView(),
-            ),
+            SizedBox(height: 30),
+            CardView(),
+            SizedBox(height: 30),
+            InputView(),
           ],
         ),
       ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
-

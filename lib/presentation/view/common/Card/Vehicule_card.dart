@@ -28,7 +28,7 @@ class _VehiculeCardState extends State<VehiculeCard> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
-        color: const Color(0xFF747474),
+        color: const Color(0xFF343434),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Column(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:viseo/presentation/view/common/Custom_button.dart';
+import 'package:viseo/presentation/view/common/Button/Controller.dart';
+import 'package:viseo/presentation/view/common/Button/Custome_ElevatedButton.dart';
 
 class NotifCard extends StatefulWidget {
   const NotifCard({
@@ -27,7 +28,7 @@ class _NotifCardState extends State<NotifCard> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
-        color: const Color(0xFF747474),
+        color: const Color(0xFF343434),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -58,12 +59,7 @@ class _NotifCardState extends State<NotifCard> {
                     ],
                   ),
                   const Spacer(),
-                  const CustomButton(
-                    type: ButtonType.iconElevatedButton,
-                    size: ButtonSize.sm,
-                    icon: Icon(Icons.add),
-                    buttonTitle: "details",
-                  ),
+                  CustomElevatedButton(size: ButtonSize.sm, icon: Icon(Icons.add), buttonTitle: "détails", color: ButtonColor.grey,onPressed: () {})
                 ],
               ),
             ),
