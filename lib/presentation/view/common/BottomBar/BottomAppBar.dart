@@ -1,5 +1,3 @@
-
-
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 
@@ -9,50 +7,64 @@ class BottomNavBar extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<BottomNavBar> createState() => _BottoAppBarState();
+  State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-class _BottoAppBarState extends State<BottomNavBar> {
+class _BottomNavBarState extends State<BottomNavBar> {
   int _currentIndex = 0; // Variable pour suivre l'élément actif
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 70,
-      child: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index; // Mettre à jour l'élément actif lorsqu'il est tapé
-          });
-        },
-        unselectedItemColor: Color.fromARGB(255, 102, 98, 98),
-        selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
-        backgroundColor: Color(0xFF555150),
-        selectedIconTheme: IconThemeData(
-          color: Colors.white, // Couleur de l'icône de l'élément actif
-          size: 24, // Taille de l'icône de l'élément actif
+    return BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index; // Mettre à jour l'élément actif lorsqu'il est tapé
+            });
+          },
+          unselectedItemColor: Color.fromARGB(255, 102, 98, 98),
+          selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
+          backgroundColor: Color(0xFF555150),
+          showSelectedLabels: false,
+          showUnselectedLabels: false,
+          items: [
+            buildBottomNavigationBarItem(Icons.warning, "Panic", 0),
+            buildBottomNavigationBarItem(FontAwesomeIcons.car, "Véhicule", 1),
+            buildBottomNavigationBarItem(FontAwesomeIcons.user, "Profil", 2),
+            buildBottomNavigationBarItem(FontAwesomeIcons.commentDots, "Chat", 3),
+          ],
+    );
+  }
+
+  BottomNavigationBarItem buildBottomNavigationBarItem(IconData icon, String label, int index) {
+    return BottomNavigationBarItem(
+      icon: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          width: 90,
+          height: 55,
+          decoration: BoxDecoration(
+            color: _currentIndex == index ? Colors.red : null, // Couleur du rectangle rouge
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Icon(
+                  icon,
+                  color: _currentIndex == index ? Colors.white : Colors.grey, 
+                  size: 20,// Couleur de l'icône
+                ),
+                const SizedBox(height: 5),
+                Text(label, style: TextStyle(color: _currentIndex == index ? Colors.white : Colors.grey),)
+            ],
+            )
         ),
-        items: const [
-          BottomNavigationBarItem(
-            icon: FaIcon(FontAwesomeIcons.signal),
-            label: "Panic",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.car_rental_outlined),
-            label: "Véhicule",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profil",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: "Chat",
-          ),
-        ],
-      ),
+    label: label
     );
   }
 }
+
+
+

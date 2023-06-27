@@ -3,6 +3,7 @@ import 'package:viseo/presentation/view/common/Card/Contact_card.dart';
 import 'package:viseo/presentation/view/common/Card/Devis_card.dart';
 import 'package:viseo/presentation/view/common/Card/Notif_card.dart';
 import 'package:viseo/presentation/view/common/Card/Rdv_card.dart';
+import 'package:viseo/presentation/view/common/Card/Sav_card.dart';
 import 'package:viseo/presentation/view/common/Card/Vehicule_card.dart';
 
 class CardView extends StatefulWidget {
@@ -40,6 +41,7 @@ class _CardViewState extends State<CardView> {
           NotifCard(title: "1234 WWT #565", descri: "Devis XX.YY.#xxxx à valider", date: "19 Juin 2023"),
           DevisCard(title: "AA.YY#25658", descri: ["Point 1", "Point 2", "Point 3"], date: "19 Juin 2023", price: "152 256.0", status: 'validé',),
           RdvCard(title: "1234 WWT #565", descri: "Devis XX.YY.#xxxx à valider", date: "19 Juin 2023", status: 'validé',),
+          SavCard(title: "Item name", type: "Type de SAV", date: "19 Juin 2023", status: "Finished"),
           ContactCard(
             title: "Adresse concerné", descri: "Service après vente/Pièce,...", 
             items: [
